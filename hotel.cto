@@ -67,6 +67,7 @@ asset guest identified by guestId{
   o Name name
 
   o IdentificationType type
+  o String Nationality
 
   o DateTime checkIn 
 
