@@ -1,0 +1,12 @@
+query selectguestbyhotel {
+  description: "Select guest by hotel"
+  statement:
+      SELECT hotel.cto.guest
+          WHERE (hotel == _$hotel)
+}
+
+query selectguestbyPolice {
+  description: "Select guest by police"
+  statement:
+      SELECT hotel.cto.guest
+}

@@ -1,0 +1,95 @@
+namespace hotel.cto
+
+concept Address{
+
+  o String line1 optional
+
+  o String line2 optional
+
+  o String line3 optional
+
+  o String COUNTRY
+
+  o String CITY     
+
+  o String STATE 
+
+  o String pinCode optional
+
+}
+
+concept Name{
+
+  o String FirstName
+
+  o String LastName
+  
+}
+
+enum IdentificationType{
+
+  o Passport
+
+  o Driving_Licence
+
+  o Aadhar
+
+}
+enum VereficationStatus {
+  o PENDING
+  o VERIFIED
+  o REJECECTED
+
+}
+
+participant hotel identified by hotelName  {
+
+  o String hotelName
+
+  o String hoteId
+
+  o Address address 
+
+}
+
+participant police identified by policeStation {
+
+  o String policeStation
+
+  o String policeStationId
+
+}
+
+asset guest identified by guestId{
+
+  o String guestId
+
+  o Name name
+
+  o IdentificationType type
+
+  o DateTime checkIn 
+
+  o DateTime checkOut
+
+  o String hotel 
+  
+  o VereficationStatus verified default = "PENDING"
+
+}
+
+//  asset chainId identified by chainId {
+
+//   o String chainId
+
+//   --> guest guest
+// }  
+abstract transaction ChangeStatus {
+  --> guest guest
+}
+transaction Verified extends ChangeStatus{
+
+}
+transaction Rejected extends ChangeStatus{
+
+}
